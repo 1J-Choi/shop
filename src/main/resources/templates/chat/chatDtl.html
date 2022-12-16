@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}">
+</head>
+<th:block layout:fragment="script">
+    <script src="/webjars/stomp-websocket/2.3.3-1/stomp.js" type="text/javascript"></script>
+    <script src="/webjars/sockjs-client/1.1.2/sockjs.js" type="text/javascript"></script>
+</th:block>
+<th:block layout:fragment="css">
+    <style>
+
+    </style>
+</th:block>
+<th:block layout:fragment="content">
+
+</th:block>
+</html>
