@@ -7,22 +7,152 @@
         .error {
             color: #bd2130;
         }
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        a {
+          text-decoration: none;
+          color: black;
+        }
+
+        li {
+          list-style: none;
+        }
+
+        .wrap {
+          width: 100%;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(0, 0, 0, 0.1);
+        }
+
+        .login {
+          width: 500px;
+          height: 600px;
+          background: white;
+          border-radius: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+        }
+
+        h2 {
+          font-size: 2em;
+        }
+        .login_sns {
+          padding: 20px;
+          display: flex;
+        }
+
+        .login_sns li {
+          padding: 0px 15px;
+        }
+
+        .login_sns a {
+          width: 50px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 5px;
+          border-radius: 50px;
+          background: white;
+          font-size: 20px;
+          box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4), -3px -3px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .login_id {
+          margin-top: 20px;
+          width: 80%;
+        }
+
+        .login_id input {
+          width: 100%;
+          height: 50px;
+          border-radius: 30px;
+          margin-top: 10px;
+          padding: 0px 20px;
+          border: 1px solid lightgray;
+          outline: none;
+        }
+
+        .login_pw {
+          margin-top: 20px;
+          width: 80%;
+        }
+
+        .login_pw input {
+          width: 100%;
+          height: 50px;
+          border-radius: 30px;
+          margin-top: 10px;
+          padding: 0px 20px;
+          border: 1px solid lightgray;
+          outline: none;
+        }
+
+        .login_etc {
+          padding: 10px;
+          width: 80%;
+          font-size: 14px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-weight: bold;
+        }
+
+        .submit {
+          margin-top: 50px;
+          width: 80%;
+        }
+
+        .submit input {
+          width: 100%;
+          height: 50px;
+          border: 0;
+          outline: none;
+          border-radius: 40px;
+          background:  linear-gradient(to right, #1687ed 0%, #14375a 100%);
+          color: white;
+          font-size: 1.2em;
+          letter-spacing: 2px;
+        }
     </style>
 </th:block>
-<div layout:fragment="content">
+<div class="wrap" layout:fragment="content">
     <form action="/members/login" role="form" method="post">
-        <div class="form-group">
-            <label th:for="email">이메일 주소</label>
-            <input type="email" name="email" class="form-control" placeholder="이메일을 입력해주세요.">
+        <div class="login">
+            <h2>Log-in</h2>
+            <div class="login_id">
+                <h4>E-mail</h4>
+                <label th:for="email"></label>
+                <input type="email" name="email" placeholder="Email">
+            </div>
+            <div class="login_pw">
+                <h4>Password</h4>
+                <label th:for="password"></label>
+                <input type="password" name="password" placeholder="Password">
+            </div>
+            <div class="login_etc">
+                <!--                <div class="checkbox">-->
+                <!--                    <input type="hidden">-->
+                <!--                </div>-->
+                <div class="forgot_pw">
+                    <a href="/members/new">Don't have an account?</a>
+                </div>
+            </div>
+            <div class="submit">
+                <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
+                <input type="submit" value="Log-in">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+            </div>
         </div>
-        <div class="form-group">
-            <label th:for="password">비밀번호</label>
-            <input type="password" name="password" class="form-control" placeholder="비밀번호를 입력해주세요.">
-        </div>
-        <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
-        <button class="btn btn-primary">로그인</button>
-        <button type="button" class="btn btn-primary" onclick="location.href='/members/new'">회원가입</button>
-        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
     </form>
 </div>
 </html>
