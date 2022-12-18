@@ -6,6 +6,17 @@
     .headerText {
       font-family: 'Edu VIC WA NT Beginner', cursive;
     }
+    .navbar-main-icon{
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        border-radius: 50px;
+        font-size: 20px;
+        border: 0;
+    }
   </style>
 </th:block>
 <div th:fragment="header">
@@ -16,7 +27,11 @@
             aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand headerText" href="/">Shop</a>
+    <div class="navbar-main-icon" margin-rignt="20px">
+      <a style="color:rgba(255,255,255,.5);" href="/">
+        <i class="fa-solid fa-cart-shopping fa-3x fa-beat"></i>
+      </a>
+    </div>
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
