@@ -144,10 +144,10 @@
         <div class="repImgDiv">
             <img th:src="${item.itemImgDtoList[0].imgUrl}" class="rounded repImg" id="repImg" th:alt="${item.itemNm}"> <!--대표 이미지 출력-->
         </div>
-        <div th:each="itemImg : ${item.itemImgDtoList}">
-            <img th:if="${not #strings.isEmpty(itemImg.imgUrl)}" th:src="${itemImg.imgUrl}"
-                 class="rounded" width="80" onmouseover="changeImg(this.src)">
-        </div>
+<!--        <div th:each="itemImg : ${item.itemImgDtoList}">-->
+<!--            <img th:if="${not #strings.isEmpty(itemImg.imgUrl)}" th:src="${itemImg.imgUrl}"-->
+<!--                 class="rounded" width="80" onmouseover="changeImg(this.src)">-->
+<!--        </div>-->
         <div class="wd50">
             <span th:text="${item.itemNm}" class="h4 font-weight-bold"></span>
             <span th:if="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL}"
@@ -166,6 +166,7 @@
                     <input type="number" name="count" id="count" class="form-control" value="1" min="1">
                 </div>
             </div>
+
             <hr class="my-4">
 
             <div class="text-right mgt-50">
