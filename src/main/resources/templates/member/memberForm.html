@@ -8,6 +8,139 @@
         .fieldError {
         color: #bd2130;
         }
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        a {
+          text-decoration: none;
+          color: black;
+        }
+
+        li {
+          list-style: none;
+        }
+
+        .wrap {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(0, 0, 0, 0.1);
+        }
+
+        .login {
+          width: 500px;
+          height: 1000px;
+          background: white;
+          border-radius: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+        }
+
+        h2 {
+          color: gray;
+          font-size: 1.5em;
+        }
+        .login_sns {
+          padding: 20px;
+          display: flex;
+        }
+
+        .login_sns li {
+          padding: 0px 15px;
+        }
+
+        .login_sns a {
+          width: 50px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 5px;
+          border-radius: 50px;
+          background: white;
+          font-size: 20px;
+          box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4), -3px -3px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .login_id {
+          margin-top: 5px;
+          width: 100%;
+        }
+
+        .account_type {
+          margin-top: 5px;
+          width: 80%;
+        }
+
+        .account_type input{
+          margin-top: 20px;
+          width: 20%;
+          font-size : 30px;
+        }
+
+
+        .login_id input {
+          width: 100%;
+          height: 50px;
+          border-radius: 30px;
+          margin-top: 10px;
+          padding: 0px 20px;
+          border: 1px solid lightgray;
+          outline: none;
+        }
+
+        .login_pw {
+          margin-top: 5px;
+          width: 80%;
+        }
+
+        .login_pw input {
+          width: 100%;
+          height: 50px;
+          border-radius: 30px;
+          margin-top: 10px;
+          padding: 0px 20px;
+          border: 1px solid lightgray;
+          outline: none;
+        }
+
+        .login_etc {
+          padding: 10px;
+          width: 80%;
+          font-size: 14px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-weight: bold;
+        }
+
+        .submit {
+          margin-top: 50px;
+          width: 80%;
+        }
+
+        .submit input {
+          width: 100%;
+          height: 50px;
+          border: 0;
+          outline: none;
+          border-radius: 40px;
+          background:  linear-gradient(to right, #868f96 0%, #596164 100%);
+          color: white;
+          font-size: 1.2em;
+          letter-spacing: 2px;
+        }
+
+        label{
+            height: 0px;
+        }
     </style>
 </th:block>
 
@@ -23,47 +156,53 @@
     </script>
 </th:block>
 
-<div layout:fragment="content">
-    <form action="/members/new" role="form" method="post" th:object="${memberFormDto}">
-        <div class="form-group">
-            <label th:for="name">Name</label>
-            <input type="text" th:field="*{name}" class="form-control" placeholder="이름을 입력해주세요.">
-            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="fieldError">Incorrect date</p>
-        </div>
-        <div class="form-group">
-            <label th:for="email">E-Mail</label>
-            <input type="text" th:field="*{email}" class="form-control" placeholder="이메일을 입력해주세요.">
-            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect date</p>
-        </div>
-        <div class="form-group">
-            <label th:for="password">Password</label>
-            <input type="text" th:field="*{password}" class="form-control" placeholder="비밀번호를 입력해주세요.">
-            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="fieldError">Incorrect date</p>
-        </div>
-        <div class="form-group">
-            <label th:for="address">Address</label>
-            <input type="text" th:field="*{address}" class="form-control" placeholder="주소를 입력해주세요.">
-            <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="fieldError">Incorrect date</p>
-        </div>
-        <div class="form-group">
-            <label th:for="number">Phone Number</label>
-            <input type="text" th:field="*{number}" class="form-control" placeholder="전화번호를 입력해주세요.">
-            <p th:if="${#fields.hasErrors('number')}" th:errors="*{number}" class="fieldError">Incorrect date</p>
-        </div>
-        <div class="form-group">
-            <label th:for="role">Account Type</label><br>
-            <input type="radio" id="admin" th:field="*{role}" th:value="${T(com.shop.constant.Role).ADMIN}" checked>
-            <label for="admin" class="form-check-label">Seller</label><br>
-            <input type="radio" id="user" th:field="*{role}" th:value="${T(com.shop.constant.Role).USER}">
-            <label for="user" class="form-check-label">Client</label><br>
-            <input type="radio" id="deliver" th:field="*{role}" th:value="${T(com.shop.constant.Role).DELIVER}">
-            <label for="user" class="form-check-label">Deliver</label>
-            <p th:if="${#fields.hasErrors('role')}" th:errors="*{role}" class="fieldError">Incorrect date</p>
-        </div>
-        <div style="text-align: center">
-            <button type="submit" class="btn btn-primary" style="">Submit</button>
-        </div>
-        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"> <!--security-->
-    </form>
+<div class="wrap" layout:fragment="content">
+    <div class="login">
+        <form action="/members/new" role="form" method="post" th:object="${memberFormDto}">
+            <h2>Sign-up</h2>
+            <div class="account_type">
+                <h4>Account Type</h4>
+                <label th:for="role"></label>
+                <input type="radio" id="admin" th:field="*{role}" th:value="${T(com.shop.constant.Role).ADMIN}" checked>Seller<br>
+                <input type="radio" id="user" th:field="*{role}" th:value="${T(com.shop.constant.Role).USER}">Client<br>
+                <input type="radio" id="deliver" th:field="*{role}" th:value="${T(com.shop.constant.Role).DELIVER}">Deliver
+                <p th:if="${#fields.hasErrors('role')}" th:errors="*{role}" class="fieldError">Incorrect date</p>
+            </div>
+            <div class="login_id">
+                <h4>Name</h4>
+                <label th:for="name"></label>
+                <input type="text" th:field="*{name}" class="form-control" placeholder="이름을 입력해주세요.">
+                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="fieldError">Incorrect date</p>
+            </div>
+            <div class="login_id">
+                <h4>E-mail</h4>
+                <label th:for="email"></label>
+                <input type="text" th:field="*{email}" class="form-control" placeholder="이메일을 입력해주세요.">
+                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect date</p>
+            </div>
+            <div class="login_pw">
+                <h4>Password</h4>
+                <label th:for="password"></label>
+                <input type="password" th:field="*{password}" class="form-control" placeholder="비밀번호를 입력해주세요">
+                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="fieldError">Incorrect date</p>
+            </div>
+            <div class="login_id">
+                <h4>Address</h4>
+                <label th:for="address"></label>
+                <input type="text" th:field="*{address}" class="form-control" placeholder="주소를 입력해주세요.">
+                <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="fieldError">Incorrect date</p>
+            </div>
+            <div class="login_id">
+                <h4>Phone Number</h4>
+                <label th:for="number"></label>
+                <input type="text" th:field="*{number}" class="form-control" placeholder="전화번호를 입력해주세요.">
+                <p th:if="${#fields.hasErrors('number')}" th:errors="*{number}" class="fieldError">Incorrect date</p>
+            </div>
+            <div class="submit">
+                <input type="submit" value="Submit">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+            </div>
+        </form>
+    </div>
 </div>
 </html>
